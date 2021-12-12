@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Simple Weather
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+      <ion-segment>
+        <ion-segment-button (click)="goRIO()">
+          <ion-label>RIO DE JANEIRO</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="goBEIJING()">
+          <ion-label>	BEIJING </ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="goLOS()">
+          <ion-label>LOS ANGELES</ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+    <ion-grid   *ngIf="city">
+    <h2>Next hours</h2>
+
+ <!-- when city == rio -->
+
+  <ion-slides *ngIf="city=='rio'">
+<ion-slide>
+      <ion-col style="text-align: center;" size="3" *ngFor="let list of weatherService.temp; let i = index">
+        <div >
+          <span>
+            {{temperature}}
+          </span> <br>
+          <span >
+            {{humidity}}
+          </span><br>
+          <span >
+            {{time}}
+          </span><br>
+      <img src="{{icon}}" alt="">
+        </div>
+      
+      </ion-col>
+    
+    </ion-slide>
+  </ion-slides>
+     
+
+         <!-- when city == beijing -->
+         <ion-slides  *ngIf="city=='beijing'">
+          <ion-slide>
+
+      <ion-col style="text-align: center;" size="3" *ngFor="let list of weatherService.temp; let i = index">
+        <div >
+          <span>
+            {{temperature}}
+          </span> <br>
+          <span >
+            {{humidity}}
+          </span><br>
+          <span >
+            {{time}}
+          </span><br>
+      <img src="{{icon}}" alt="">
+        </div>
+      
+      </ion-col>
+ 
+</ion-slide>
+</ion-slides>
+
+   <!-- when city == los -->
+   <ion-slides  *ngIf="city=='los'">
+    <ion-slide>
+
+      <ion-col style="text-align: center;" size="3" *ngFor="let list of weatherService.temp; let i = index">
+        <div >
+          <span>
+            {{temperature}}
+          </span> <br>
+          <span >
+            {{humidity}}
+          </span><br>
+          <span >
+            {{time }}
+          </span><br>
+      <img src="{{icon}}" alt="">
+        </div>
+      
+      </ion-col>
+
+  </ion-slide>
+</ion-slides>
+
+  
+</ion-grid>
+
+<ion-grid>
+  Next 5 days
+  
+</ion-grid>
+</ion-content>
